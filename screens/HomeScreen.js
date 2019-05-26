@@ -67,19 +67,22 @@ export default class HomeScreen extends React.Component {
               </View>
 
               <View style={styles.thirdFlexBox}>
-                <Button
+                <TouchableOpacity 
+                  style={styles.sampleButton}
                   onPress={this.onPressEvent}
-                  style = {{width:'70%'}}
-                  title='Book'
-                  color="#841584"
-                />
-                <Button
+                  underlayColor='#fff'>
+                    
+                    <Text style={{color:'#ffffff', textAlign:'center'}}>Book</Text>
+                </TouchableOpacity>
+                <TouchableOpacity 
+                  style={styles.sampleButton}
                   onPress={this.onPressEvent}
-                  title='Cancel'
-                  color="#841584"
-                />
+                  underlayColor='#fff'>
+                    
+                    <Text style={{color:'#ffffff', textAlign:'center'}}>Cancel</Text>
+                </TouchableOpacity>
               </View>
-              
+              {/* onPress={() => navigate('HomeScreen')} */}
             </View>
           }
           keyExtractor={(item, index) => index.toString()}
@@ -107,6 +110,18 @@ const styles = StyleSheet.create({
   },
   thirdFlexBox:{
     flex: 1, 
-    width: 60
+    width: 0
+  },
+  sampleButton:{
+    width: 90,
+    marginRight:40,
+    marginLeft:40,
+    marginTop:10,
+    paddingTop:10,
+    paddingBottom:10,
+    backgroundColor:'#1E6738',
+    borderRadius:10,
+    borderWidth: 1,
+    borderColor: '#fff'
   }
 });
