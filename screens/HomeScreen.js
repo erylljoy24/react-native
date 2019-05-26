@@ -30,17 +30,17 @@ export default class HomeScreen extends React.Component {
 
 
   async componentDidMount(){
-    try {
-      const response = await fetch('https://api.myjson.com/bins/7yfn8');
-      const responseJson = await response.json();
+    return fetch('https://api.myjson.com/bins/7yfn8')
+    .then((response) => response.json())
+    .then((responseJson) => {
       this.setState({
         isLoading: false,
         dataSource: responseJson.movies,
-      });
-    }
-    catch (error) {
-      console.log(error);
-    }
+      })
+    })
+    .catch((error) => {
+      console.error(error);
+    });
   }
 
   render() {
@@ -58,12 +58,12 @@ export default class HomeScreen extends React.Component {
           renderItem={({item}) => 
             <View style={styles.listStyle}>
               <Image
-                style={{width:50, height:50}}
+                style={{width:80, height:100}}
                 source={{uri: item.image}}
               />
               <View style={{flex:1, marginLeft: 5}}>
-                <Text style={{fontSize: 15, fontStyle: 'italic'}}>{item.title}</Text>
-                <Text style={{fontSize: 15, fontStyle: 'italic'}}>{item.releaseYear}</Text>
+                <Text style={{fontSize: 20, fontWeight: 'bold', fontStyle: 'italic'}}>{item.title}</Text>
+                <Text style={{fontSize: 20, fontWeight: 'bold', fontStyle: 'italic'}}>{item.releaseYear}</Text>
               </View>
 
               <View style={styles.thirdFlexBox}>
